@@ -1,4 +1,3 @@
-// src/state/reducers/favoriteCharactersReducer.ts
 import {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,

@@ -1,43 +1,66 @@
-// src/styles/CharactersList.scss
-
 .residents-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
-    .resident-card {
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-      width: 250px;
-      text-align: center;
+.resident-card {
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 
-      img {
-        max-width: 100%;
-        border-radius: 50%;
-        margin-bottom: 10px;
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .resident-details {
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
       }
+    }
 
-      .resident-details {
-        h4 {
-          margin-bottom: 10px;
-        }
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
-        p {
-          margin: 8px 0;
-        }
-
-        a {
-          color: #007bff;
-          text-decoration: none;
-          font-weight: bold;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
+      &:hover {
+        background-color: #218838;
       }
     }
   }
+}

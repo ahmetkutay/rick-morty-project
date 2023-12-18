@@ -1,4 +1,3 @@
-// src/state/store.ts
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import locationReducer from "./reducers/locationReducer";
 import characterReducer from "./reducers/characterReducer";

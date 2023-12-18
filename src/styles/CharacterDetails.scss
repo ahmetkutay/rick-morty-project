@@ -1,0 +1,40 @@
+.split-layout {
+  display: flex;
+
+  .left-section {
+    flex: 1;
+    padding: 20px;
+
+    .character-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+
+      .character-image {
+        width: 100%;
+        max-width: 200px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .character-details {
+        h2 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+        }
+
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .right-section {
+    flex: 1;
+    padding: 20px;
+
+  }
+}

@@ -1,4 +1,3 @@
-// src/state/reducers/locationReducer.ts
 import { SET_LOCATIONS } from "../actions/locationActions";
 
 const initialState = {

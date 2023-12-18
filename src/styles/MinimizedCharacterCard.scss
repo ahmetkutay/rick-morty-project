@@ -1,0 +1,36 @@
+.minimized-character-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  max-width: 150px;
+  margin-bottom: 10px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .card-details {
+    padding: 12px;
+
+    h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 4px 0;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,4 +1,3 @@
-// src/hooks/useCharacters.ts
 import { useEffect, useState } from "react";
 import { fetchApiCharacters } from "../services/api";
 

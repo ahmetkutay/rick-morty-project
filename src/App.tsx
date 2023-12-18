@@ -1,9 +1,7 @@
-// src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LocationsList from './components/Locations/LocationsList';
 import LocationDetails from './components/Locations/LocationDetails';
-import CharactersList from './components/Characters/CharactersList';
 import CharacterDetails from './components/Characters/CharacterDetails';
 import FavoriteCharacters from './components/Characters/FavoriteCharacters';
 import './styles/App.scss';

@@ -1,4 +1,3 @@
-// src/components/Characters/CharactersList.tsx
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useCharacters from '../../hooks/useCharacters';

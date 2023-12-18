@@ -1,8 +1,10 @@
-// src/components/Characters/CharactersList.tsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites } from '../../state/actions/favoriteCharactersActions';
+import { RootState } from '../../state/store';
 import { fetchApiCharacterDetails } from '../../services/api';
-import '../../styles/CharactersList.scss'; // Import the stylesheet
+import '../../styles/CharactersList.scss';
 
 interface Character {
     id: string;
@@ -14,28 +16,35 @@ interface Character {
     origin: {
         name: string;
     };
-    image: string; // Character image URL
+    image: string;
 }
 
 interface CharactersListProps {
     characterIds: string[];
+    filter?: string | null;
 }
 
-const CharactersList: React.FC<CharactersListProps> = ({ characterIds }) => {
+const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter }) => {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchCharacters = async () => {
             setIsLoading(true);
             try {
-                // Fetch details for each resident
                 const residentsData = await Promise.all(
                     characterIds.map((characterId: string) =>
                         fetchApiCharacterDetails(characterId.split('/').pop()!)
                     )
                 );
-                setCharacters(residentsData);
+
+                const filteredCharacters = filter
+                    ? residentsData.filter((character) => character.status.toLowerCase() === filter)
+                    : residentsData;
+
+                localStorage.setItem('characters', JSON.stringify(filteredCharacters));
+                setCharacters(filteredCharacters);
             } catch (error) {
                 console.error('Error fetching characters:', error);
             } finally {
@@ -46,7 +55,11 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds }) => {
         if (characterIds.length > 0) {
             fetchCharacters();
         }
-    }, [characterIds]);
+    }, [characterIds, filter]);
+
+    const handleAddToFavorites = (characterId: string) => {
+        dispatch(addToFavorites(characterId));
+    };
 
     return (
         <div className="residents-container">
@@ -56,15 +69,16 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds }) => {
                 <>
                     {characters.map((character) => (
                         <div key={character.id} className="resident-card">
-                            <img src={character.image} alt={`${character.name}'s image`} />
+                            <img src={character.image} alt={character.name} />
                             <div className="resident-details">
                                 <h4>{character.name}</h4>
                                 <p>Status: {character.status}</p>
                                 <p>Species: {character.species}</p>
-                                <p>Type: {character.type}</p>
+                                <p>Type: {character.type === undefined ? "-" : character.type}</p>
                                 <p>Gender: {character.gender}</p>
-                                <p>Origin: {character.origin.name}</p>
+                                <p>Origin: {character.origin.name === "unknown" ? "-" : character.origin.name}</p>
                                 <Link to={`/characters/${character.id}`}>View Details</Link>
+                                <button onClick={() => handleAddToFavorites(character.id)}>Add to Favorites</button>
                             </div>
                         </div>
                     ))}

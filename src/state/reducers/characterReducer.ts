@@ -1,4 +1,3 @@
-// src/state/reducers/characterReducer.ts
 import { SET_CHARACTERS } from "../actions/characterActions";
 
 const initialState = {
