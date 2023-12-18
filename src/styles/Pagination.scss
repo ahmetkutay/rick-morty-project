@@ -1,0 +1,27 @@
+// src/styles/Pagination.scss
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.pagination-button:hover {
+  color: #0056b3;
+}
+
+.pagination-button.active {
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}

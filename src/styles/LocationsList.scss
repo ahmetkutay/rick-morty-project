@@ -1,0 +1,29 @@
+// src/styles/LocationsList.scss
+
+.locations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.locations-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.location-item {
+  width: 48%; /* Adjust the width based on your preference */
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.location-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.location-item a:hover {
+  color: #007bff;
+}
