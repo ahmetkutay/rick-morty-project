@@ -22,7 +22,7 @@ const MinimizedCharacterCard: React.FC<MinimizedCharacterCardProps> = ({ charact
             <img src={character.image} alt={character.name} />
             <div className="card-details">
                 <h4>{character.name}</h4>
-                <p>{character.species} / {character.type}</p>
+                <p>{character.species} / {character.type ? character.type : "-"}</p>
             </div>
         </div>
     );

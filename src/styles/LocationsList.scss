@@ -11,19 +11,38 @@
 
 .location-item {
   width: 48%;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
   box-sizing: border-box;
-}
+  transition: transform 0.3s ease-in-out;
 
-.location-item a {
-  text-decoration: none;
-  color: #333;
-}
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-.location-item a:hover {
-  color: #007bff;
+  a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: #777;
+  }
+
+  strong {
+    color: #555;
+  }
 }
 
 .filter-section {
@@ -39,12 +58,12 @@
 
   button {
     margin-right: 10px;
-    padding: 5px 10px;
+    padding: 8px 15px;
     cursor: pointer;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 
     &:hover {
       background-color: #0056b3;
@@ -58,12 +77,12 @@
   margin-bottom: 20px;
 
   button {
-    padding: 5px 10px;
+    padding: 8px 15px;
     cursor: pointer;
     background-color: #28a745;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 
     &:hover {
       background-color: #218838;
@@ -71,7 +90,7 @@
   }
 }
 
-.wrapper-section{
+.wrapper-section {
   display: flex;
   width: 100%;
   align-items: flex-end;

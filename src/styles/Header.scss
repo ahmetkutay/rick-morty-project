@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff; // You can change the background color
+    color: #fff; // Text color
+    font-size: 1.5rem;
+
+    h1 {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .go-back-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }

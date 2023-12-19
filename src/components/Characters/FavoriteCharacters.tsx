@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../state/actions/favoriteCharactersActions';
 import Pagination from '../common/Pagination';
 import { RootState } from '../../state/store';
+import Header from '../common/Header';
 
 interface Character {
     id: string;
@@ -33,6 +34,8 @@ const CharactersList: React.FC = () => {
     };
 
     return (
+        <>
+            <Header />
         <div>
             <h1>Characters</h1>
             {characters.map((character: Character) => (
@@ -49,6 +52,7 @@ const CharactersList: React.FC = () => {
                 throw new Error('Function not implemented.');
             }} />
         </div>
+        </>
     );
 };
 

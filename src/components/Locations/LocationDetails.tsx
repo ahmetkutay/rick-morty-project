@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import CharactersList from '../Characters/CharactersList';
 import { fetchApiLocationDetails } from '../../services/api';
+import Header from '../common/Header';
 
 interface LocationDetail {
     id: string;
@@ -41,6 +42,7 @@ const LocationDetails: React.FC = () => {
 
     return (
         <div>
+            <Header />
             <div className='wrapper-section'>
                 <div className="filter-section">
                     <div>

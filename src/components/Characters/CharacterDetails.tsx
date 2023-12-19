@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchApiCharacterDetails } from '../../services/api';
 import '../../styles/CharacterDetails.scss';
 import MinimizedCharacterCard from './MinimizedCharacterCard';
+import Header from '../common/Header';
 
 interface CharacterDetailsType {
     id: string;
@@ -47,6 +48,8 @@ const CharacterDetails: React.FC = () => {
     }, [id]);
 
     return (
+        <>
+            <Header />
         <div className="split-layout">
             <div className="left-section card">
                 {isLoading ? (
@@ -72,6 +75,8 @@ const CharacterDetails: React.FC = () => {
                 </div>
             </div>
         </div>
+        </>
+
     );
 };
 
