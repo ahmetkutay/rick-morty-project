@@ -4,6 +4,7 @@ import CharactersList from '../Characters/CharactersList';
 import { fetchApiLocationDetails } from '../../services/api';
 import Header from '../common/Header';
 import SkeletonCharacterLoader from '../common/SkeletonCharacterLoader';
+import "../../styles/LocationsList.scss"
 
 interface LocationDetail {
     id: string;
@@ -50,7 +51,7 @@ const LocationDetails: React.FC = () => {
                     <div>
                         <h3>Filters by status</h3>
                     </div>
-                    <div>
+                    <div className='filters-container'>
                         <button onClick={() => handleFilterChange('dead')}>Dead</button>
                         <button onClick={() => handleFilterChange('alive')}>Alive</button>
                         <button onClick={() => handleFilterChange('unknown')}>Unknown</button>

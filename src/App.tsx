@@ -5,7 +5,6 @@ import LocationDetails from './components/Locations/LocationDetails';
 import CharacterDetails from './components/Characters/CharacterDetails';
 import FavoriteCharacters from './components/Characters/FavoriteCharacters';
 import './styles/App.scss';
-import SkeletonCharacterLoader from './components/common/SkeletonCharacterLoader';
 
 const App: React.FC = () => {
   return (
