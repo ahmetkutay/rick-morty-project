@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import CharactersList from '../Characters/CharactersList';
 import { fetchApiLocationDetails } from '../../services/api';
 import Header from '../common/Header';
+import SkeletonCharacterLoader from '../common/SkeletonCharacterLoader';
 
 interface LocationDetail {
     id: string;
@@ -62,7 +63,9 @@ const LocationDetails: React.FC = () => {
                 </div>
             </div>
             {isLoading ? (
-                <div style={{ display: 'flex', justifyContent: 'center' }}>Loading...</div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <SkeletonCharacterLoader />
+                </div>
             ) : !locationDetails || locationDetails.residents.length === 0 ? (
                 <div style={{ display: 'flex', justifyContent: 'center' }}>No Character Found</div>
             ) : (

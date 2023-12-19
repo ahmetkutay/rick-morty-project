@@ -5,6 +5,7 @@ import { addToFavorites, removeFromFavorites } from '../../state/actions/favorit
 import { RootState } from '../../state/store';
 import { fetchApiCharacterDetails } from '../../services/api';
 import '../../styles/CharactersList.scss';
+import SkeletonCharacterLoader from '../common/SkeletonCharacterLoader';
 
 interface Character {
     id: string;
@@ -77,7 +78,9 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
     return (
         <div className="residents-container">
             {isLoading ? (
-                <div>Loading...</div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <SkeletonCharacterLoader />
+                </div>
             ) : (
                 <>
                     {characters.map((character) => (
