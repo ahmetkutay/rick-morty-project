@@ -16,7 +16,7 @@ const LocationsList: React.FC = () => {
     const [locations, setLocations] = useState<Location[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [locationsInfo, setLocationsInfo] = useState<any>();
-
+    const [currentPage, setCurrentPage] = useState(1);
     const fetchLocations = async (pageId: number) => {
         try {
             const data = await fetchApiLocations(pageId);
@@ -53,7 +53,10 @@ const LocationsList: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                    <Pagination totalPages={locationsInfo.pages} currentPage={1} onPageChange={(page) => fetchLocations(page)} />
+                        <Pagination totalPages={locationsInfo.pages} currentPage={currentPage} onPageChange={(page) => {
+                            fetchLocations(page)
+                            setCurrentPage(page)
+                        }} />
                 </>
             )}
         </div>
