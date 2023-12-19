@@ -1,0 +1,23 @@
+.skeleton-location-loader {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .skeleton-location-item {
+    width: 48%;
+    height: 100px; /* Adjust the height according to your design */
+    background-color: #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    animation: loadingAnimation 1s infinite ease-in-out;
+  }
+
+  @keyframes loadingAnimation {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }

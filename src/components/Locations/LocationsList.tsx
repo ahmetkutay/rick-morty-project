@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchApiLocations } from '../../services/api';
 import Pagination from '../common/Pagination';
 import '../../styles/LocationsList.scss';
+import SkeletonLocationLoader from '../common/SkeletonLocationLoader';
 
 interface Location {
     id: string;
@@ -36,7 +37,7 @@ const LocationsList: React.FC = () => {
     return (
         <div className="locations-container">
             {isLoading ? (
-                <div>Loading...</div>
+                <div><SkeletonLocationLoader /></div>
             ) : (
                 <>
                     <div className="locations-columns">
