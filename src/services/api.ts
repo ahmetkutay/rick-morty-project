@@ -22,19 +22,6 @@ export const fetchApiLocationDetails = async (locationId: string) => {
   }
 };
 
-export const fetchApiCharacters = async (locationId: string) => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/character?location=${locationId}`
-    );
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    console.error("Error fetching characters:", error);
-    throw error;
-  }
-};
-
 export const fetchApiCharacterDetails = async (characterId: string) => {
   try {
     const response = await fetch(`${BASE_URL}/character/${characterId}`);
