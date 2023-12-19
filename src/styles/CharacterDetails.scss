@@ -30,11 +30,38 @@
         }
       }
     }
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
   }
 
   .right-section {
     flex: 1;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .left-section,
+    .right-section {
+      padding: 10px;
+    }
   }
 }

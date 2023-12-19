@@ -31,4 +31,15 @@
       text-decoration: underline;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: row-reverse;
+
+    h1 {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: fit-content;
+    }
+  }
 }

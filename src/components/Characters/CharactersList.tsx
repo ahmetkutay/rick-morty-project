@@ -90,12 +90,14 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
                                 <p>Type: {character.type === undefined ? "-" : character.type}</p>
                                 <p>Gender: {character.gender}</p>
                                 <p>Origin: {character.origin.name === "unknown" ? "-" : character.origin.name}</p>
-                                <Link to={`/characters/${character.id}`}>View Details</Link>
-                                {isFavorite(character.id) ? (
-                                    <button onClick={() => handleAddToFavorites(character.id)}>Remove from Favorites</button>
-                                ) : (
+                                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                    <Link to={`/characters/${character.id}`}>View Details</Link>
+                                    {isFavorite(character.id) ? (
+                                        <button onClick={() => handleAddToFavorites(character.id)}>Remove from Favorites</button>
+                                    ) : (
                                         <button onClick={() => handleAddToFavorites(character.id)}>Add to Favorites</button>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}

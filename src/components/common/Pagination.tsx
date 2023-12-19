@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../../styles/Pagination.scss';
 
 interface PaginationProps {
@@ -9,13 +9,6 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPageChange }) => {
     const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
-
-    useEffect(() => {
-        const paginationContainer = document.querySelector('.pagination-container');
-        if (paginationContainer) {
-            paginationContainer.scrollIntoView({ behavior: "smooth" });
-        }
-    }, [currentPage])
 
     return (
         <div className="pagination-container">
