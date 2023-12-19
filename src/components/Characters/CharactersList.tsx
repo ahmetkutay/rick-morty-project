@@ -5,7 +5,6 @@ import { addToFavorites, removeFromFavorites } from '../../state/actions/favorit
 import { RootState } from '../../state/store';
 import { fetchApiCharacterDetails } from '../../services/api';
 import '../../styles/CharactersList.scss';
-import favoriteCharactersReducer from '../../state/reducers/favoriteCharactersReducer';
 
 interface Character {
     id: string;
@@ -36,14 +35,20 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
             setIsLoading(true);
             try {
                 const residentsData = await Promise.all(
-                    characterIds.map((characterId: string) =>
-                        fetchApiCharacterDetails(characterId.split('/').pop()!)
-                    )
+                    characterIds.map(async (characterId: string) => {
+                        try {
+                            const idToFetch = typeof characterId === 'string' && characterId.includes('/') ? characterId.split('/').pop()! : characterId;
+                            return await fetchApiCharacterDetails(idToFetch);
+                        } catch (error) {
+                            console.error(`Error fetching character with ID ${characterId}:`, error);
+                            return null;
+                        }
+                    })
                 );
 
                 const filteredCharacters = filter
-                    ? residentsData.filter((character) => character.status.toLowerCase() === filter)
-                    : residentsData;
+                    ? residentsData.filter((character) => character && character.status.toLowerCase() === filter)
+                    : residentsData.filter(Boolean);
 
                 localStorage.setItem('characters', JSON.stringify(filteredCharacters));
                 setCharacters(filteredCharacters);
