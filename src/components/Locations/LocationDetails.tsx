@@ -33,6 +33,7 @@ const LocationDetails: React.FC = () => {
             }
         };
 
+
         fetchLocationDetails();
     }, [id]);
 
@@ -60,11 +61,13 @@ const LocationDetails: React.FC = () => {
                     </Link>
                 </div>
             </div>
-            {isLoading || !locationDetails ? (
-                <div>Loading...</div>
+            {isLoading ? (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>Loading...</div>
+            ) : !locationDetails || locationDetails.residents.length === 0 ? (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>No Character Found</div>
             ) : (
                 <div>
-                        <CharactersList characterIds={locationDetails.residents} filter={filter} />
+                            <CharactersList characterIds={locationDetails.residents} filter={filter} />
                 </div>
             )}
         </div>
