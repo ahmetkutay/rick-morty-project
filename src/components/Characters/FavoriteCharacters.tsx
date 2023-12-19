@@ -1,35 +1,22 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import useCharacters from '../../hooks/useCharacters';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../state/actions/favoriteCharactersActions';
 import Pagination from '../common/Pagination';
 import { RootState } from '../../state/store';
 import Header from '../common/Header';
 
-interface Character {
-    id: string;
-    name: string;
-    status: string;
-}
-
 const CharactersList: React.FC = () => {
-    const { id: locationId } = useParams<{ id: string }>();
-    const { characters, isLoading } = useCharacters(locationId || "");
     const favoriteCharacters = useSelector((state: RootState) => state.favoriteCharacters.favoriteCharacters);
     const dispatch = useDispatch();
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    const isFavorite = (characterId: string) => favoriteCharacters.some((favCharacterId) => favCharacterId === characterId);
 
-    const isFavorite = (characterId: string) => favoriteCharacters.some((character: Character) => character.id === characterId);
-
-    const handleToggleFavorite = (character: Character) => {
-        if (isFavorite(character.id)) {
-            dispatch(removeFromFavorites(character.id));
+    const handleToggleFavorite = (characterId: string) => {
+        if (isFavorite(characterId)) {
+            dispatch(removeFromFavorites(characterId));
         } else {
-            dispatch(addToFavorites(character));
+            dispatch(addToFavorites(characterId));
         }
     };
 
@@ -38,13 +25,13 @@ const CharactersList: React.FC = () => {
             <Header />
         <div>
             <h1>Characters</h1>
-            {characters.map((character: Character) => (
-                <div key={character.id}>
-                    <Link to={`/characters/${character.id}`}>
-                        {character.name} - {character.status}
+                {favoriteCharacters.map((favCharacterId) => (
+                    <div key={favCharacterId}>
+                        <Link to={`/characters/${favCharacterId}`}>
+                            test - 1
                     </Link>
-                    <button onClick={() => handleToggleFavorite(character)}>
-                        {isFavorite(character.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                        <button onClick={() => handleToggleFavorite(favCharacterId)}>
+                            {isFavorite(favCharacterId) ? 'Remove from Favorites' : 'Add to Favorites'}
                     </button>
                 </div>
             ))}

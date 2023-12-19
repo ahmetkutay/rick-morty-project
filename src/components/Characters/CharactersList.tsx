@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorites } from '../../state/actions/favoriteCharactersActions';
+import { addToFavorites, removeFromFavorites } from '../../state/actions/favoriteCharactersActions';
 import { RootState } from '../../state/store';
 import { fetchApiCharacterDetails } from '../../services/api';
 import '../../styles/CharactersList.scss';
+import favoriteCharactersReducer from '../../state/reducers/favoriteCharactersReducer';
 
 interface Character {
     id: string;
@@ -28,6 +29,7 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
     const [characters, setCharacters] = useState<Character[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
+    const favoriteCharacters = useSelector((state: RootState) => state.favoriteCharacters.favoriteCharacters);
 
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -57,8 +59,14 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
         }
     }, [characterIds, filter]);
 
+    const isFavorite = (characterId: string) => favoriteCharacters.includes(characterId);
+
     const handleAddToFavorites = (characterId: string) => {
-        dispatch(addToFavorites(characterId));
+        if (!isFavorite(characterId)) {
+            dispatch(addToFavorites(characterId));
+        } else {
+            dispatch(removeFromFavorites(characterId));
+        }
     };
 
     return (
@@ -78,7 +86,11 @@ const CharactersList: React.FC<CharactersListProps> = ({ characterIds, filter })
                                 <p>Gender: {character.gender}</p>
                                 <p>Origin: {character.origin.name === "unknown" ? "-" : character.origin.name}</p>
                                 <Link to={`/characters/${character.id}`}>View Details</Link>
-                                <button onClick={() => handleAddToFavorites(character.id)}>Add to Favorites</button>
+                                {isFavorite(character.id) ? (
+                                    <button onClick={() => handleAddToFavorites(character.id)}>Remove from Favorites</button>
+                                ) : (
+                                        <button onClick={() => handleAddToFavorites(character.id)}>Add to Favorites</button>
+                                )}
                             </div>
                         </div>
                     ))}

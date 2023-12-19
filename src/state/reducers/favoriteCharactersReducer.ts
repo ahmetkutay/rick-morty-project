@@ -3,14 +3,8 @@ import {
   REMOVE_FROM_FAVORITES,
 } from "../actions/favoriteCharactersActions";
 
-interface Character {
-  id: string;
-  name: string;
-  status: string;
-}
-
 interface FavoriteCharactersState {
-  favoriteCharacters: Character[];
+  favoriteCharacters: string[];
 }
 
 const initialState: FavoriteCharactersState = {
@@ -31,7 +25,7 @@ const favoriteCharactersReducer = (
       return {
         ...state,
         favoriteCharacters: state.favoriteCharacters.filter(
-          (character) => character.id !== action.payload
+          (characterId) => characterId !== action.payload
         ),
       };
     default:
